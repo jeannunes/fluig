@@ -1,6 +1,6 @@
 const pages = new function () {
 
-            var pagesObj = $(".pages"),
+            var pagesObj = document.querySelectorAll(".pages"),
                     current_page = localStorage.getItem("pages.current_page") ? parseInt(localStorage.getItem("pages.current_page")) : 1,
                     callbacks = {};
 
@@ -25,7 +25,7 @@ const pages = new function () {
             };
 
             this.hideAll = function () {
-                pagesObj.hide();
+                pagesObj.style.display = 'none';
             };
 
             this.getCurrentPage = function () {
@@ -51,7 +51,7 @@ const pages = new function () {
 
                 current_page = parseInt(index);
 
-                $(".pages[data-page=" + index + "]").fadeIn();
+                document.querySelectorAll(".pages[data-page=" + index + "]").style.display = 'block';
                 localStorage.setItem("pages.current_page", index);
                 window.scrollTo(0, 0);
                 return true;
